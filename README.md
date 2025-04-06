@@ -21,8 +21,8 @@ This has been tested with the NOR chip still attached to the motherboard.
 # Requirements
 ## Python Setup
 Requirements:
-- Python 2.7
-- pyserial 2.5
+- (Python 2.7(https://www.python.org/ftp/python/2.7/python-2.7.amd64.msi))
+- (pyserial 2.5(https://sourceforge.net/projects/pyserial/files/pyserial/2.5/pyserial-2.5.win32.exe/download))
 
 ## Teensy Software Setup
 I am not distributing a `.hex` file because I haven't added a way to adjust the read/write clock speeds. You may need to adjust them to find values that are stable for your chip.
