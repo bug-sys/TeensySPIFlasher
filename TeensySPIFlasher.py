@@ -276,28 +276,27 @@ class SPIFlasher(TeensySerial):
                 self.SPI_BLOCK_SIZE = self.SPI_SECTORS_PER_BLOCK * self.SPI_SECTOR_SIZE
                 self.SPI_ADDRESS_LENGTH = 4
                 self.SPI_USE_3BYTE_CMDS = False
-
             else:
                 print "Chip type:         Unknown (0x%02x)" % self.DEVICE_ID
                 self.close()
                 sys.exit(1)
 
-         elif self.MF_ID == 0xEF:
-             print "Chip manufacturer: Winbond (0x%02x)"%self.MF_ID
-             if self.DEVICE_ID == 0x18:
-                 print "Chip type:         W25Q256FV (0x%02x)"%self.DEVICE_ID
-                 self.SPI_BLOCK_COUNT = 512
-                 self.SPI_SECTORS_PER_BLOCK = 16
-                 self.SPI_SECTOR_SIZE = 0x1000
-                 self.SPI_TOTAL_SECTORS = self.SPI_SECTORS_PER_BLOCK * self.SPI_BLOCK_COUNT
-                 self.SPI_BLOCK_SIZE = self.SPI_SECTORS_PER_BLOCK * self.SPI_SECTOR_SIZE
-                 self.SPI_ADDRESS_LENGTH = 4
-                 self.SPI_USE_3BYTE_CMDS = True
+        elif self.MF_ID == 0xEF:
+            print "Chip manufacturer: Winbond (0x%02x)" % self.MF_ID
+            if self.DEVICE_ID == 0x18:
+                print "Chip type:         W25Q256FV (0x%02x)" % self.DEVICE_ID
+                self.SPI_BLOCK_COUNT = 512
+                self.SPI_SECTORS_PER_BLOCK = 16
+                self.SPI_SECTOR_SIZE = 0x1000
+                self.SPI_TOTAL_SECTORS = self.SPI_SECTORS_PER_BLOCK * self.SPI_BLOCK_COUNT
+                self.SPI_BLOCK_SIZE = self.SPI_SECTORS_PER_BLOCK * self.SPI_SECTOR_SIZE
+                self.SPI_ADDRESS_LENGTH = 4
+                self.SPI_USE_3BYTE_CMDS = True
+            else:
+                print "Chip type:         Unknown (0x%02x)" % self.DEVICE_ID
+                self.close()
+                sys.exit(1)
 
-             else:
-                 print "Chip type:         unknown (0x%02x)"%self.DEVICE_ID
-                 self.close()
-                 sys.exit(1)
         else:
             print "Chip manufacturer: Unknown (0x%02x)" % self.MF_ID
             print "Chip type:         Unknown (0x%02x)" % self.DEVICE_ID
@@ -310,10 +309,10 @@ class SPIFlasher(TeensySerial):
         else:
             print "Chip size:         %d MB" % (self.SPI_BLOCK_SIZE * self.SPI_BLOCK_COUNT / 1024 / 1024)
 
-        print "Sector size:       %d bytes" % (self.SPI_SECTOR_SIZE)
-        print "Block size:        %d bytes" % (self.SPI_BLOCK_SIZE)
-        print "Sectors per block: %d" % (self.SPI_SECTORS_PER_BLOCK)
-        print "Number of blocks:  %d" % (self.SPI_BLOCK_COUNT)
+        print "Sector size:       %d bytes" % self.SPI_SECTOR_SIZE
+        print "Block size:        %d bytes" % self.SPI_BLOCK_SIZE
+        print "Sectors per block: %d" % self.SPI_SECTORS_PER_BLOCK
+        print "Number of blocks:  %d" % self.SPI_BLOCK_COUNT
         print "Number of sectors: %d" % (self.SPI_SECTORS_PER_BLOCK * self.SPI_BLOCK_COUNT)
 
 
