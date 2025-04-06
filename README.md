@@ -15,6 +15,7 @@ It is partially based on hjudge's [SPIway utility](https://github.com/hjudges/NO
 - **Winbond W25X10CL** is supported.
 - **Winbond W25Q80BV** is supported.
 - **Winbond W25Q256FV** is supported.
+
 This has been tested with the NOR chip still attached to the motherboard.
 
 # Requirements
