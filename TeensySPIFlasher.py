@@ -277,16 +277,6 @@ class SPIFlasher(TeensySerial):
                 self.SPI_ADDRESS_LENGTH = 4
                 self.SPI_USE_3BYTE_CMDS = False
 
-             elif self.DEVICE_ID == 0x10:
-                 print "Chip type:         MX25L1006E (0x%02x)" % self.DEVICE_ID
-                 self.SPI_BLOCK_COUNT = 2
-                 self.SPI_SECTORS_PER_BLOCK = 16
-                 self.SPI_SECTOR_SIZE = 0x1000
-                 self.SPI_TOTAL_SECTORS = self.SPI_SECTORS_PER_BLOCK * self.SPI_BLOCK_COUNT
-                 self.SPI_BLOCK_SIZE = self.SPI_SECTORS_PER_BLOCK * self.SPI_SECTOR_SIZE
-                 self.SPI_ADDRESS_LENGTH = 3
-                 self.SPI_USE_3BYTE_CMDS = False
-
             else:
                 print "Chip type:         Unknown (0x%02x)" % self.DEVICE_ID
                 self.close()
@@ -294,25 +284,7 @@ class SPIFlasher(TeensySerial):
 
          elif self.MF_ID == 0xEF:
              print "Chip manufacturer: Winbond (0x%02x)"%self.MF_ID
-             if self.DEVICE_ID == 0x10:
-                 print "Chip type:         W25X10CL (0x%02x)"%self.DEVICE_ID
-                 self.SPI_BLOCK_COUNT = 2
-                 self.SPI_SECTORS_PER_BLOCK = 16
-                 self.SPI_SECTOR_SIZE = 0x1000
-                 self.SPI_TOTAL_SECTORS = self.SPI_SECTORS_PER_BLOCK * self.SPI_BLOCK_COUNT
-                 self.SPI_BLOCK_SIZE = self.SPI_SECTORS_PER_BLOCK * self.SPI_SECTOR_SIZE
-                 self.SPI_ADDRESS_LENGTH = 3
-                 self.SPI_USE_3BYTE_CMDS = False
-             elif self.DEVICE_ID == 0x13:
-                 print "Chip type:         W25Q80BV (0x%02x)"%self.DEVICE_ID
-                 self.SPI_BLOCK_COUNT = 16
-                 self.SPI_SECTORS_PER_BLOCK = 16
-                 self.SPI_SECTOR_SIZE = 0x1000
-                 self.SPI_TOTAL_SECTORS = self.SPI_SECTORS_PER_BLOCK * self.SPI_BLOCK_COUNT
-                 self.SPI_BLOCK_SIZE = self.SPI_SECTORS_PER_BLOCK * self.SPI_SECTOR_SIZE
-                 self.SPI_ADDRESS_LENGTH = 3
-                 self.SPI_USE_3BYTE_CMDS = False
-             elif self.DEVICE_ID == 0x18:
+             if self.DEVICE_ID == 0x18:
                  print "Chip type:         W25Q256FV (0x%02x)"%self.DEVICE_ID
                  self.SPI_BLOCK_COUNT = 512
                  self.SPI_SECTORS_PER_BLOCK = 16
